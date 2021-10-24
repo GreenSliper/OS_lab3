@@ -42,15 +42,14 @@ namespace OS_lab3
 				threadProvider.StartNewThread(operationBlocks[j].StartCalculate);
 			}
 		}
-
 		public bool StartNewIterationBlock(IOperationBlock block)
 		{
 			int currentStart, currentEnd;
-			int currentBlock = Math.Min(blockSize, totalIterations - currentIteration);
-			if (currentBlock <= 0)
-				return false;
 			lock (this)
 			{
+				int currentBlock = Math.Min(blockSize, totalIterations - currentIteration);
+				if (currentBlock <= 0)
+					return false;
 				currentStart = currentIteration;
 				currentIteration += currentBlock + 1;
 				currentEnd = currentIteration - 1;

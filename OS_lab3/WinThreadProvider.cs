@@ -42,10 +42,12 @@ namespace OS_lab3
         {
             StartThread(func, stackSize);
         }
+
         public void TerminateAllThreads()
 		{
             foreach (var h in threadHandles)
                 CloseHandle(h);
+            threadHandles.Clear();
 		}
 	}
 }
